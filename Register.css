@@ -1,0 +1,82 @@
+/* Register.css */
+
+.register-container {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align the content */
+}
+
+.register-container h2 {
+    font-size: 24px;
+    margin-top: 0;
+    color: #333;
+}
+
+.register-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.register-container input {
+    width: 65%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Adjustments to the register button to make it full-width */
+.register-container button {
+    width: 50%; /* Set to full width to occupy its own line */
+    padding: 10px;
+    margin-bottom: 1px; /* Add some margin to the bottom */
+    background-color: #FFA500; /* Orange color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Adjust the login link to appear below the register button */
+.register-container button.login-btn {
+    display: block; /* Make the button a block-level element */
+    width: 100%; /* Full width to center the text */
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    margin-top: 5px; /* Adjust margin if needed */
+    padding: 10px 0; /* Add padding to increase click area */
+}
+
+.register-container button.login-btn:hover {
+    color: #007bff; /* Darker blue color on hover */
+}
+
+
+/* Style for the "Login" button */
+.register-container button.login-btn {
+    background: none;
+    border: none;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit; /* Inherit font size from parent */
+    margin-top: 10px; /* Adjust margin if needed */
+}
+
+/* Style for the "Login" button on hover */
+.register-container button.login-btn:hover {
+    color: #007bff; /* Change color on hover to a darker shade of blue */
+}
+
