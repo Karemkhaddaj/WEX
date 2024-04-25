@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Test from './Test';
 import ForgotPassword from './ForgotPassword';
 import { ToastContainer } from 'react-toastify';
+import Logout from './Logout';
+import Account from './Account';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/test" element={<Test />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/Logout" element={<Logout />} />
+          <Route path="/Account" element={<Account />} />
         </Routes>
       </BrowserRouter>
     </div>

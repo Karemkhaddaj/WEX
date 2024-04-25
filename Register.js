@@ -54,7 +54,6 @@ function Register() {
         try {
             const response = await fetch('http://localhost:3001/api/adduser', {
                 method: 'POST',
-
                 body: formdata
             })
             const data = await response.json()

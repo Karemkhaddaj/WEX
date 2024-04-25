@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import "./Home.css";
 import { useNavigate } from 'react-router-dom';
+import Account from './Account';
+import Logout from './Logout';
 
 function Home() {
 
@@ -11,22 +13,24 @@ function Home() {
     }
 
     return (
-        <div>
+        <div className="home-container">
             <Navbar onItemClick={handleClick} />
-            {selectedItem === 'buying' && <BuyingItems />}
-            {selectedItem === 'selling' && <SellingItems />}
-            {selectedItem === 'account' && <MyAccount />}
-            {selectedItem === 'logout' && <Logout />}
-
-            <div className="profile-circle">
-                <img src={sessionStorage.getItem("pfp")} alt="Pma zabett" />
+            <div className="content">
+                {selectedItem === 'buying' && <BuyingItems />}
+                {selectedItem === 'selling' && <SellingItems />}
+                {selectedItem === 'account' && <Account />}
+                {selectedItem === 'logout' && <Logout />}
             </div>
         </div>
-    )
+    );
 }
+
 const Navbar = ({ onItemClick }) => {
     return (
         <nav className="navbar">
+            <div className="profile-circle">
+                <img src={sessionStorage.getItem("pfp")} alt="Profile" />
+            </div>
             <ul className="navbar-list">
                 <li className="navbar-item" onClick={() => onItemClick('buying')}>Buying</li>
                 <li className="navbar-item" onClick={() => onItemClick('selling')}>Selling</li>
@@ -51,24 +55,6 @@ const SellingItems = () => {
             {/* Content for Selling Items */}
             <h2>Selling Items</h2>
             <p>List of items available for sale...</p>
-        </div>
-    );
-};
-const MyAccount = () => {
-    return (
-        <div>
-            {/* Content for My Account */}
-            <h2>My Account</h2>
-            <p>User account information...</p>
-        </div>
-    );
-};
-const Logout = () => {
-    return (
-        <div>
-            {/* Content for Logout */}
-            <h2>Log Out</h2>
-            <p>Logout functionality...</p>
         </div>
     );
 };

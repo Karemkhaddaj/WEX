@@ -28,12 +28,11 @@ function Login() {
         const data = await response.json()
         console.log(data)
         sessionStorage.setItem('username', data.username)
-        sessionStorage.setItem('name', data.name)
+        sessionStorage.setItem('em', data.em)
         sessionStorage.setItem("pfp", data.pfp)
+        sessionStorage.setItem("phonenb:", data.phonenb)
         console.log("saved to session storage: ", sessionStorage.getItem('username'), sessionStorage.getItem('name'))
-
     }
-
 
     async function handleSubmit(event) {
         event.preventDefault();
