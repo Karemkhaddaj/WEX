@@ -3,23 +3,35 @@ import "./Home.css";
 import { useNavigate } from 'react-router-dom';
 import Account from './Account';
 import Logout from './Logout';
+import BrowsingItems from './BrowsingItems';
+import ItemDetails from './ItemDetails';
 
 function Home() {
 
     const [selectedItem, setSelectedItem] = useState(null);
+    const [itemDetails, setItemDetails] = useState(null);
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
 
-    function handleClick(item) {
-        setSelectedItem(item);
+    function handleItemClick(itemType) {
+        setSelectedItem(itemType);
+    }
+    function handleItemSelect(item) {
+        setItemDetails(item);
+        setShowDetailsModal(true);
+    }
+    function handleCloseModal() {
+        setShowDetailsModal(false);
     }
 
     return (
         <div className="home-container">
-            <Navbar onItemClick={handleClick} />
+            <Navbar onItemClick={handleItemClick} />
             <div className="content">
-                {selectedItem === 'buying' && <BuyingItems />}
+                {selectedItem === 'buying' && <BrowsingItems onItemSelected={handleItemSelect} />}
                 {selectedItem === 'selling' && <SellingItems />}
                 {selectedItem === 'account' && <Account />}
                 {selectedItem === 'logout' && <Logout />}
+                {showDetailsModal && <ItemDetails item={itemDetails} onClose={handleCloseModal} />}
             </div>
         </div>
     );
@@ -38,15 +50,6 @@ const Navbar = ({ onItemClick }) => {
                 <li className="navbar-item" onClick={() => onItemClick('logout')}>Log Out</li>
             </ul>
         </nav>
-    );
-};
-const BuyingItems = () => {
-    return (
-        <div>
-            {/* Content for Buying Items */}
-            <h2>Buying Items</h2>
-            <p>List of items available for purchase...</p>
-        </div>
     );
 };
 const SellingItems = () => {

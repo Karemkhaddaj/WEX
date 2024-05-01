@@ -8,6 +8,8 @@ import ForgotPassword from './ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import Logout from './Logout';
 import Account from './Account';
+import BrowsingItems from './BrowsingItems';
+import ItemDetails from './ItemDetails';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/Logout" element={<Logout />} />
           <Route path="/Account" element={<Account />} />
+          <Route path="/Browsing" element={<BrowsingItems />} />
+          <Route path="/item/:itemId" element={<ItemDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
