@@ -1,35 +1,35 @@
 /* Chatbox.css */
 .chatbox {
-  padding: 12px 16px;
-  background-color: #ffffff; /* White background for each chat box */
-  border: 1px solid #ddd; /* Light grey border for some depth */
-  border-radius: 8px; /* Rounded corners */
-  margin: 8px 0; /* Spacing between each chatbox */
-  cursor: pointer; /* Indicates the element is clickable */
-  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
-  display: flex;
-  justify-content: space-between; /* Space content evenly */
-  align-items: center; /* Align items vertically */
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 8px auto;
+  width: 80%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
-
 .chatbox:hover {
-  background-color: #f5f5f5; /* Slightly darker background on hover */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Soft shadow to lift the element on hover */
+  background-color: #e8e8e8;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
-
-.chatbox div {
-  color: #333; /* Dark grey text for better readability */
-  font-size: 0.9rem; /* Moderate text size */
+/* Additional styling for the container and potential header */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-
-.chatbox .participant-info {
-  font-weight: bold; /* Bold text for emphasis */
-}
-
-/* Responsive adjustments if necessary */
-@media (max-width: 600px) {
-  .chatbox {
-      flex-direction: column;
-      text-align: center;
-  }
+.content-header {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  color: #292525;
+  margin-bottom: 15px;
 }

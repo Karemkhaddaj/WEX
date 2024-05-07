@@ -1,27 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import './Chatbox.css'; // Ensure the CSS file is correctly linked
+/* eslint-disable react/prop-types */
+
+//this component will render the chats (not messages)
+import { useEffect, useState } from 'react';
+import './Chatbox.css'
 import { useNavigate } from 'react-router-dom';
 
+
 function Chatbox({ id, participants, sender }) {
-  const [receiver, setReceiver] = useState('');
-  const navigate = useNavigate();
+
+  const [receiver, setreceiver] = useState('');
+  const navigate = useNavigate()
+
+  function assignReceiver(sender, participants) {
+    let receiver;
+    participants.forEach(participant => {
+      if (participant !== sender) {
+        receiver = participant;
+      }
+    });
+    return receiver ? receiver : sender;
+  }
 
   useEffect(() => {
-    const assignedReceiver = participants.find(participant => participant !== sender);
-    setReceiver(assignedReceiver || sender); // Ensure there's always a receiver even if it falls back to the sender
-    sessionStorage.setItem("receiver", assignedReceiver);
-  }, [participants, sender]);
+    const rec = assignReceiver(sender, participants)
+    setreceiver(rec)
+    sessionStorage.setItem("receiver", rec)
 
-  function enterChat() {
-    navigate("/chatinit");
+  }, [])
+
+  function enterchat() {
+    const rec = assignReceiver(sender, participants)
+    setreceiver(rec)
+    sessionStorage.setItem("receiver", rec)
+    navigate("/chatinit")
   }
 
   return (
-    <div className="chatbox" onClick={enterChat}>
-      <div className="chat-info">Chat ID: {id}</div>
-      <div className="participant-info">Participant: {receiver}</div>
+    <div className="chatbox" onClick={enterchat}>
+      {receiver}
     </div>
   );
 }
-
 export default Chatbox;

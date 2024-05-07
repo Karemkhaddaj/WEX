@@ -9,7 +9,7 @@
     justify-content: flex-start; /* Align items to the start at first */
     height: 100vh;
     padding-top: 20px; /* Add some space at the top */
-    background-color: #f0f0f0;
+    background-color: #393636;
     align-items: center; /* Center items horizontally */
   }
   .content {
@@ -23,7 +23,6 @@
   }
   
   .navbar-item {
-   
     padding: 10px 25px;
       cursor: pointer;
       text-align: center;
@@ -31,7 +30,7 @@
   }
   .navbar-item a{
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
   }
   .navbar-item:not(:last-child) {
     margin-bottom: 10px; /* Add some space between the nav items, if needed */
@@ -77,7 +76,7 @@
     width: 150px; /* Adjust the size as needed */
     height: 150px; /* Adjust the size as needed */
     object-fit: cover; /* Ensures the image covers the area, useful for different aspect ratios */
-    border: 3px solid #ccc; /* Adds a border around the image */
+    border: 3px solid #4a4545; /* Adds a border around the image */
     margin-bottom: 10px; /* Adds space between the image and the text */
   }
   

@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../NavBar/Sidebar';
+import './SellProduct.css'
 
 function SellProduct() {
-
+  const API = import.meta.env.VITE_REACT_API
+  const categories = ['car', 'electronics', 'book', "accessories", 'apartment', 'appliance', 'sports', 'pets', 'furniture', 'games']
   const initialFormData = {
     Title: "",
     image: null,
@@ -14,6 +16,7 @@ function SellProduct() {
   const navigate = useNavigate();
   const [info, setInfo] = useState(initialFormData)
   const [errormsg, seterrormsg] = useState('')
+
   function handleChange(event) {
     const { name, value } = event.target;
     const newValue = name === 'image' ? event.target.files[0] : value;
@@ -28,7 +31,6 @@ function SellProduct() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-
     console.log(info)
     var Title = info.Title
     var image = info.image
@@ -44,15 +46,16 @@ function SellProduct() {
     formdata.append('username', sessionStorage.getItem('username'))
 
     try {
-      const response = await fetch('/api/additem', {
+      const response = await fetch(`${API}/additem`, {
         method: 'POST',
-
+        headers: {
+          'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`
+        },
         body: formdata
       })
       const data = await response.json()
 
       if (!response.ok) {
-
         seterrormsg(data.error)
         return;
       }
@@ -81,7 +84,14 @@ function SellProduct() {
             <input onChange={handleChange} value={info.description} type="text" placeholder='Description' id="Description" name="description" />
 
             <label htmlFor="category">Category</label>
-            <input onChange={handleChange} value={info.category} type="text" placeholder='Category' id="Category" name="category" />
+            <select onChange={handleChange} value={info.category} id="category" name="category">
+              <option value="">Select a category</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
 
             <label htmlFor="price">Price</label>
             <input onChange={handleChange} value={info.price} type="text" placeholder='price' id="price" name="price" />

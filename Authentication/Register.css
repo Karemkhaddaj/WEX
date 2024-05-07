@@ -4,7 +4,8 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #ffffff;
+  color: #303b47;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
@@ -33,16 +34,17 @@
 .register-container .register-btn {
   width: 50%;
   padding: 10px;
-  background-color: #FFA500;
+  background-color: #302b24;;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 15px;
+  margin-left: 80px;
 }
 
 .register-container .register-btn:hover {
-  background-color: #FF8C00;;
+  background-color: #303a3b;
 }
 
 .register-container .login-btn {

@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import  { useState } from 'react'
+
 import "./Login.css"
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { app } from '../../../firebaseConfig';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
-
+import Cookies from 'js-cookie'
+import { useLogin } from '../../hooks/useLogin';
 function Login() {
-
+    const {login} = useLogin()
+    const API = import.meta.env.VITE_REACT_API
+    console.log(API)
     const navigate = useNavigate();
-    const [errormsg, seterrormsg] = useState('')
+    const [errormsg,seterrormsg] = useState('')
     const [info, setInfo] = useState({
         email: "",
         password: ""
@@ -22,24 +25,31 @@ function Login() {
         }))
     }
 
-    async function informbackend() {
-        const email = info.email
-        const response = await fetch(`/api/login/${email}`)
-        const data = await response.json()
-        console.log(data)
-        sessionStorage.setItem('username', data.username)
-        sessionStorage.setItem('name', data.name)
-        sessionStorage.setItem("pfp", data.pfp)
-        sessionStorage.setItem("pn", data.pn)
-        sessionStorage.setItem("email", data.email)
-        console.log("saved to session storage: ", sessionStorage.getItem('username'), sessionStorage.getItem('name'), sessionStorage.getItem('email'))
-
-    }
-
-
+    async function informbackend(){
+        const email= info.email
+         const response = await fetch(`${API}/login/${email}`,{
+            method:'GET',
+            
+         })
+          const data =  await response.json()
+          console.log(data)
+          sessionStorage.setItem('username',data.username)
+          sessionStorage.setItem('name',data.name)
+          sessionStorage.setItem("pfp", data.pfp)
+          sessionStorage.setItem("pn",data.pn)
+          sessionStorage.setItem("email",data.email)
+          sessionStorage.setItem('categ','')
+          sessionStorage.setItem('jwtToken',data.token)
+          console.log("saved to session storage: ",sessionStorage.getItem('username'),sessionStorage.getItem('name'),sessionStorage.getItem('email'))
+          
+         login(data.username)
+         
+        }
+    
+    
     async function handleSubmit(event) {
         event.preventDefault();
-
+         
         const auth = getAuth();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, info.email, info.password);
@@ -49,8 +59,9 @@ function Login() {
             console.log(userCredential)
         } catch (error) {
             seterrormsg("invalid credentials")
-            console.log('inv creds', error);
+            console.log('inv creds',error);
         }
+       
     }
 
     return (
@@ -65,9 +76,9 @@ function Login() {
                 <input onChange={handleChange} value={info.password} type="password" placeholder="**************" id="password" name="password" />
                 <button type="submit">Log In</button>
             </form>
-            <button className="register-btn" onClick={() => navigate('/register')}>Don't have an account? Register here.</button>
-            {errormsg && <p style={{ color: 'red' }}>{errormsg}</p>}
-            <Link to="/forgotpassword" className="forgotPass">
+            <button className="register-btn" onClick={()=>navigate('/register')}>Don't have an account? Register here.</button>
+        {errormsg && <p style={{ color:'red'}}>{errormsg}</p>}
+        <Link to="/forgotpassword" className="forgotPass">
                 Forgot Password
             </Link>
         </div>

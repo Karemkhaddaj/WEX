@@ -24,7 +24,7 @@
 }
 
 .login-container input {
-    width: 65%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -34,15 +34,17 @@
 .login-container button {
     width: 50%;
     padding: 10px;
-    background-color: #FFA500; /* Orange color */
+    background-color: #302b24; /* Orange color */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 85px;
+
 }
 
 .login-container button:hover {
-    background-color: #FF8C00; /* Darker orange color on hover */
+    background-color: #303a3b; /* Darker orange color on hover */
 }
 /* Style for the "Register" button */
 .login-container button.register-btn {
@@ -52,6 +54,7 @@
     cursor: pointer;
     font-size: inherit; /* Inherit font size from parent */
     margin-top: 10px; /* Adjust margin if needed */
+    margin-left: 5px;
 }
 
 /* Style for the "Register" button on hover */
@@ -68,5 +71,4 @@
 .forgotPass:hover {
     color: #04305c;
 }
-
 
